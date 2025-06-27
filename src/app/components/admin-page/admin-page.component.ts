@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, of } from 'rxjs';
@@ -16,19 +16,8 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
 export class AdminPageComponent {
   private service = inject(CourseService)
 
-   courses=toSignal(this.service
-   .getCourses()
-   .pipe(catchError(err=>{
-     console.log(err);
-     return of([])
-   })),
-   {initialValue : [] as Course[]});
-
-
-
-   
-displayedColumns: string[] = ['id', 'name', 'description', 'duration', 'level', 'price', 'actions'];
-
+  courses = signal<Course[]>([]);
+  
   constructor(private dialog: MatDialog) {}
 
   openAddCourseDialog(course:any) {
@@ -38,6 +27,14 @@ displayedColumns: string[] = ['id', 'name', 'description', 'duration', 'level', 
     });
   }
 
+  ngOnInit(){
+    this.service.getCourses().subscribe({
+      next: values=>{this.courses.set(values)},
+      error: err=>{console.log(err)}
+    });
+  }
+
+
   editCourse(course: any) {
    this.openAddCourseDialog(course);
     // lógica de edición (puedes abrir un modal con datos existentes)
@@ -45,11 +42,17 @@ displayedColumns: string[] = ['id', 'name', 'description', 'duration', 'level', 
 
   deleteCourse(id: number) {
     console.log("entra")
-     this.service.deleteCourse(id).subscribe(res=>{
-      console.log(res),
-      this.service.getCourses
-    
-    });
+     this.service.deleteCourse(id).subscribe(
+      {
+        next: res=>{
+
+        },error: err=>{
+
+        },complete:()=>{
+          this.ngOnInit()
+        }
+      }
+     );
   }
   getLevelClass(level: string): string {
   switch (level.toLowerCase()) {

@@ -1,10 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef,MatDialogContent ,MatDialogTitle} from '@angular/material/dialog';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-add-course-dialog',
@@ -13,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './add-course-dialog.component.css'
 })
 export class AddCourseDialogComponent {
+  private service = inject(CourseService)
   courseForm: FormGroup;
 
   constructor(
@@ -31,6 +33,7 @@ export class AddCourseDialogComponent {
 
   onSave(): void {
     if (this.courseForm.valid) {
+      this.service.insertCourse(this.courseForm.value).subscribe();
       this.dialogRef.close(this.courseForm.value);
     }
   }
