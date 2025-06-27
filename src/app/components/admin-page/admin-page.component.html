@@ -1,1 +1,38 @@
-<p>admin-page works!</p>
+<div class="container-fluid">
+    
+    <div class="header">
+    <h2>Gestión de Cursos</h2>
+    <button mat-raised-button color="primary" (click)="openAddCourseDialog(null)">Agregar Curso</button>
+  </div>
+<table  class="mat-elevation-z8 full-width-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Duración</th>
+      <th>Nivel</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody class="table-group-divider">
+    @for (course of courses(); track $index) {
+      <tr>
+        <td>{{ course.id }}</td>
+        <td>{{ course.name }}</td>
+        <td>{{ course.description }}</td>
+        <td>{{ course.duration }}</td>
+        <td>{{ course.level }}</td>
+        <td>{{ course.price  }}</td>
+        <td>
+          <button mat-raised-button class="btn btn-warning me-2" (click)="editCourse(course)">Editar</button>
+          <button mat-raised-button class="btn btn-danger" (click)="deleteCourse(course.id)">Eliminar</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+</div>

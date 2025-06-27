@@ -1,11 +1,28 @@
-<div class="p-5 mb-4 rounded-3" style="background-color: rgb(218, 213, 213);">
-    <div class="container-fluid py-5">
-        <h1 class="display-4 fw-bold">Tienda en línea</h1>
-        <p class="col-md-6 fs-4">
-            Bienvenido a mi tienda, donde podrás encontrar los mejores productos de la mejor calidad
-            <span style="font-style: italic;">disfruta y compra</span></p>
-
-        <div class="slider">
-                <img [src]="images[currentIndex()]">
-        </div>
+<div class="home-container">
+  <div class="content-wrapper">
+    <div class="image-section">
+       <img [src]="images[currentIndex()]" alt="Cursos en línea" class="main-image" />
+    </div>
+    <div class="intro-section">
+      <h1>Bienvenido a Santiago's Courses</h1>
+      <p>
+        Descubre una variedad de cursos online diseñados para potenciar tus habilidades y conocimientos desde la comodidad de tu hogar.
+      </p>
+      <mat-card class="course-card">
+        <mat-card-title>Cursos Destacados</mat-card-title>
+        <mat-card-content>
+          <p>Explora nuestros cursos más populares:</p>
+          <ul>
+            <li>Java: desde lo básico hasta frameworks avanzados.</li>
+            <li>Angular: construye SPA modernas y escalables.</li>
+            <li>Docker: domina la contenedorización y despliegue.</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+      <div class="button-group">
+        <button mat-raised-button color="primary" [routerLink]="'/courses'">Ver Cursos</button>
+        <button mat-raised-button color="accent" [routerLink]="'/admingPage'">Panel Administrador</button>
+      </div>
+    </div>
+  </div>
 </div>

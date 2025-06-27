@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>{{ data ? 'Editar Curso' : 'Agregar Curso' }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="courseForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Duración</mat-label>
+      <input matInput formControlName="duration">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nivel</mat-label>
+      <mat-select formControlName="level">
+        <mat-option value="Básico">Básico</mat-option>
+        <mat-option value="Intermedio">Intermedio</mat-option>
+        <mat-option value="Experto">Experto</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" formControlName="price">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="courseForm.invalid">Guardar</button>
+</div>
