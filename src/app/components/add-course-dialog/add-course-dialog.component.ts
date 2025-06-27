@@ -1,12 +1,14 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef,MatDialogContent ,MatDialogTitle} from '@angular/material/dialog';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-add-course-dialog',
-  imports: [MatFormField,MatLabel,MatSelect,MatOption,ReactiveFormsModule],
+  imports: [MatFormField,MatLabel,MatSelect,MatOption,ReactiveFormsModule, MatInputModule ,MatButtonModule, MatDialogContent,MatDialogTitle],
   templateUrl: './add-course-dialog.component.html',
   styleUrl: './add-course-dialog.component.css'
 })

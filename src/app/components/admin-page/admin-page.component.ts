@@ -45,8 +45,11 @@ displayedColumns: string[] = ['id', 'name', 'description', 'duration', 'level', 
 
   deleteCourse(id: number) {
     console.log("entra")
-     this.service.deleteCourse(id),
-     this.service.getCourses;
+     this.service.deleteCourse(id).subscribe(res=>{
+      console.log(res),
+      this.service.getCourses
+    
+    });
   }
   getLevelClass(level: string): string {
   switch (level.toLowerCase()) {
