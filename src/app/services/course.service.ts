@@ -14,8 +14,8 @@ export interface Course{
 })
 export class CourseService {
 private http: HttpClient = inject (HttpClient)
-  private baseUrl:string="http://localhost:8084/course"
-  //private baseUrl:string="/api/item"
+  //private baseUrl:string="http://localhost:8084/course"
+  private baseUrl:string="/api/course"
 
   getCourses():Observable<Course[]>{
     return this.http.get<Course[]>(this.baseUrl)

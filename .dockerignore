@@ -1,0 +1,7 @@
+description
+.git
+.gitignore
+.angular
+node_modules
+.vscode
+backend
