@@ -43,8 +43,8 @@ private http: HttpClient = inject (HttpClient)
          .pipe(
            timeout(3000),
            catchError(err=>{
-             console.log(" error insert ", err);
-             return throwError(()=> new Error(" error al insertar "))
+             console.log(" error actualizar ", err);
+             return throwError(()=> new Error(" error al actualizar "))
            })
          );
 }

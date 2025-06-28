@@ -7,9 +7,10 @@ import { AddCourseDialogComponent } from '../add-course-dialog/add-course-dialog
 import {MatButton, MatButtonModule} from '@angular/material/button';
 import {MatTable, MatTableModule} from '@angular/material/table';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
+
 @Component({
   selector: 'app-admin-page',
-  imports: [MatDialogModule, MatButton,MatTable, MatIcon],
+  imports: [MatDialogModule, MatButton,MatTableModule, MatIconModule],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css'
 })
@@ -21,19 +22,38 @@ export class AdminPageComponent {
   constructor(private dialog: MatDialog) {}
 
   openAddCourseDialog(course:any) {
-    this.dialog.open(AddCourseDialogComponent, {
+    const dialogRef =  this.dialog.open(AddCourseDialogComponent, {
       width: '400px',
       data: course
     });
+     dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+  
+      // 🔁 Volver a cargar los cursos
+      this.getCourses(); // <-- aquí actualizas la tabla
+    }
+  });
+  }
+
+  closeAddCourseDialog(course:any) {
+    this.dialog.afterAllClosed.subscribe(
+      {
+        complete:()=>
+        this.getCourses()
+      }
+    );
   }
 
   ngOnInit(){
-    this.service.getCourses().subscribe({
+    this.getCourses()
+  }
+
+  getCourses(){
+this.service.getCourses().subscribe({
       next: values=>{this.courses.set(values)},
       error: err=>{console.log(err)}
     });
   }
-
 
   editCourse(course: any) {
    this.openAddCourseDialog(course);

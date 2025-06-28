@@ -23,6 +23,7 @@ export class AddCourseDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.courseForm = this.fb.group({
+      id: [data?.id],
       name: [data?.name || '', Validators.required],
       description: [data?.description || '', Validators.required],
       duration: [data?.duration || '', Validators.required],
@@ -32,8 +33,16 @@ export class AddCourseDialogComponent {
   }
 
   onSave(): void {
+    console.log(this.courseForm.value)
     if (this.courseForm.valid) {
-      this.service.insertCourse(this.courseForm.value).subscribe();
+      if(this.courseForm.value.id!=null){
+this.service.updateCourse(this.courseForm.value).subscribe();
+
+      }else{
+this.service.insertCourse(this.courseForm.value).subscribe();
+      }
+
+      
       this.dialogRef.close(this.courseForm.value);
     }
   }
