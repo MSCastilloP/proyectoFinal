@@ -17,7 +17,7 @@ Ambos botones están acompañados de imágenes ilustrativas para mejorar la expe
 
 | Página Inicial |
 |----------------|
-| ![Página inicial](Imagenes\pagina_principal.png) |
+| ![Página inicial](pagina_principal.png) |
 
 ---
 
@@ -29,7 +29,7 @@ En esta sección se muestran los cursos registrados en forma de tarjetas .
 
 | Cursos disponibles |
 |--------------------|
-| ![Lista de cursos](Imagenes\pagina_principal.png) |
+| ![Lista de cursos](pagina_principal.png) |
 
 ---
 
