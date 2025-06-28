@@ -29,7 +29,7 @@ En esta sección se muestran los cursos registrados en forma de tarjetas .
 
 | Cursos disponibles |
 |--------------------|
-| ![Lista de cursos](pagina_principal.png) |
+| ![Lista de cursos](VisualizacionCursos.png) |
 
 ---
 
@@ -41,15 +41,13 @@ Desde aquí puedes:
 - Editar los cursos existentes
 - Eliminar cursos
 
-Se utiliza un `MatDialog` para mostrar el formulario de edición/creación con validaciones y campos como:
-
 
 
 > 📸 Ejemplo:
 
 | Editor de Cursos |
 |------------------|
-| ![Editor de cursos](Imagenes\panel administrador.png) |
+| ![Editor de cursos](panel_administrador.png) |
 
 ---
 
